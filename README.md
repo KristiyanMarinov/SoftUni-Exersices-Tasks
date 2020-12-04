@@ -1,2 +1,2 @@
 # SoftUni-Exersices-Tasks
-My work in SoftUni !
+My work in SoftUni 
