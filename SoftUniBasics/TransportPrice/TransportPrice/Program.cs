@@ -1,33 +1,27 @@
 ﻿import java.util.Scanner;
 
-public class PriceOfTransport
+public class PipesinPool
 {
     public static void main(String[] args)
     {
         Scanner scanner = new Scanner(System.in);
-        int n = Integer.parseInt(scanner.nextLine());
-        String time = scanner.nextLine();
-        double price = 0;
-        if (n >= 20 && n < 100)
+        int V = Integer.parseInt(scanner.nextLine());
+        int p1 = Integer.parseInt(scanner.nextLine());
+        int p2 = Integer.parseInt(scanner.nextLine());
+        double H = Double.parseDouble(scanner.nextLine());
+        double V1 = Math.floor((p1 + p2) * H / V * 100);
+        if (V1 > 100)
         {
-            price = n * 0.09;
-        }
-        else if (n >= 100)
-        {
-            price = 0.06 * n;
+            double overflows = ((p1 + p2) * H) - V;
+            System.out.printf("For %.2f hours the pool overflows with %.2f liters.", H, overflows);
         }
         else
         {
-            if (time.equals("day"))
-            {
-                price = 0.7 + 0.79 * n;
-            }
-            else if (time.equals("night"))
-            {
-                price = 0.7 + 0.9 * n;
-            }
+
+            double litersfrompipes = (p1 + p2);
+            double p1inpercent = Math.floor((p1 / litersfrompipes) * 100);
+            double p2inpercent = Math.floor((p2 / litersfrompipes) * 100);
+            System.out.printf("The pool is %.0f%% full. Pipe 1: %.0f%%. Pipe 2: %.0f%%.", V1, p1inpercent, p2inpercent);
         }
-        System.out.printf("%.2f", price);
     }
 }
-
