@@ -12,6 +12,7 @@ public class Harvest
         double liters = kg / 2.5;
         int Z = Integer.parseInt(scanner.nextLine());
         int workers = Integer.parseInt(scanner.nextLine());
+
         if (liters < Z)
         {
             System.out.printf("It will be a tough winter! More %.0f liters wine needed.", Math.floor(Z - liters));
