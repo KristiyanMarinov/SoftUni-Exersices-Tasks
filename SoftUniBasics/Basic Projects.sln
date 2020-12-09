@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sleepy Tom Cat", "Sleepy To
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SquareArea", "SquareArea\SquareArea.csproj", "{3CA2DE58-7981-41E8-B72B-C7D6BB0E8BC6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimeForTheExam", "TimeForTheExam\TimeForTheExam.csproj", "{432BB576-ACD0-49F1-B39D-E8BA91B44430}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3CA2DE58-7981-41E8-B72B-C7D6BB0E8BC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3CA2DE58-7981-41E8-B72B-C7D6BB0E8BC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3CA2DE58-7981-41E8-B72B-C7D6BB0E8BC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{432BB576-ACD0-49F1-B39D-E8BA91B44430}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{432BB576-ACD0-49F1-B39D-E8BA91B44430}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{432BB576-ACD0-49F1-B39D-E8BA91B44430}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{432BB576-ACD0-49F1-B39D-E8BA91B44430}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
