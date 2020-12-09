@@ -16,6 +16,7 @@ public class Firm
         else
         {
             System.out.printf("Not enough time!%.0f hours needed.", Math.floor(hours - workhours));
+
         }
     }
 }
