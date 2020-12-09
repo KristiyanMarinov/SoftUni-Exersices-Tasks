@@ -10,6 +10,7 @@ public class PipesinPool
         int p2 = Integer.parseInt(scanner.nextLine());
         double H = Double.parseDouble(scanner.nextLine());
         double V1 = Math.floor((p1 + p2) * H / V * 100);
+
         if (V1 > 100)
         {
             double overflows = ((p1 + p2) * H) - V;
