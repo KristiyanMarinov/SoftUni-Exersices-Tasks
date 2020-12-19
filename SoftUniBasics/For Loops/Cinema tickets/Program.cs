@@ -1,58 +1,99 @@
-﻿import java.util.Scanner;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Text.RegularExpressions;
 
-public class CinemaTickets
+
+
+namespace Exercise
+
 {
-    public static void main(String[] args)
+    class Program
     {
-        Scanner scanner = new Scanner(System.in);
-        String film = scanner.nextLine();
-        int totalsales = 0;
-        double student = 0;
-        double standart = 0;
-        double kids = 0;
-        while (!film.equals("Finish"))
+        static void Main(string[] args)
         {
-            int freeseats = Integer.parseInt(scanner.nextLine());
-            String command = scanner.nextLine();
-            int saleseats = 0;
-            while (!command.equals("End"))
+            int n = int.Parse(Console.ReadLine());
+           
+            Dictionary<string, List<int>> massages = new Dictionary<string, List<int>>();
+
+            string command = Console.ReadLine();
+
+            while (command!= "Statistics")
             {
-
-                if (command.equals("student"))
+                string[] tokens = command.Split("=");
+                string currCommand = tokens[0];
+                switch (currCommand)
                 {
-                    student += 1;
+                    case "Add":
+                        string username = tokens[1];
+                        int sent = int.Parse(tokens[2]);
+                        int received = int.Parse(tokens[3]);
+                        if (!massages.ContainsKey(username))
+                        {
+                            massages.Add(username, new List<int> { sent, received });
+                        }
+                        break;
+                    case "Message":
+                        string sender = tokens[1];
+                        string receiver = tokens[2];
+                        
+                        if (massages.ContainsKey(sender)&& massages.ContainsKey(receiver))
+                        {
+                            massages[sender][0] += 1;
+                            massages[receiver][1] += 1;
+                            if (massages[sender].Sum()>=n)
+                            {
+                                string key = "";
+                                foreach (var item in massages)
+                                {
+                                    if (item.Key==sender)
+                                    {
+                                        key = item.Key;
+                                    }
+                                }
+                                massages.Remove(sender);
+                                Console.WriteLine($"{key} reached the capacity!");
+                            }
+                            if (massages[receiver].Sum()>=n)
+                            {
+                                string keyReceiver = "";
+                                foreach (var item in massages)
+                                {
+                                    if (item.Key == receiver)
+                                    {
+                                        keyReceiver = item.Key;
+                                    }
+                                }
+                                massages.Remove(receiver);
+                                Console.WriteLine($"{keyReceiver} reached the capacity!");
+                            }
+                        }
+                        break;
+                    case "Empty":
+                        string user = tokens[1];
+                        
+                        if (user!="All")
+                        {
+                            massages[user].Clear();
+                        }
+                        else
+                        {
+                            massages.Clear();
+                        }
+                        break;
                 }
-                else if (command.equals("standard"))
-                {
-                    standart += 1;
-                }
-                else if (command.equals("kid"))
-                {
-                    kids += 1;
-                }
-                saleseats += 1;
-                totalsales += 1;
-                if (saleseats == freeseats)
-                {
-                    break;
-                }
-                command = scanner.nextLine();
+                command = Console.ReadLine();
             }
-            double percent = 1.0 * saleseats / freeseats * 100;
-            System.out.printf("%s - %.2f%% full.%n", film, percent);
-            film = scanner.nextLine();
-        }
-        if (film.equals("Finish"))
-        {
-            double percentstudent = student / totalsales * 100;
-            double percentstandart = standart / totalsales * 100;
-            double percentkids = kids / totalsales * 100;
-            System.out.printf("Total tickets: %d%n", totalsales);
-            System.out.printf("%.2f%% student tickets.%n", percentstudent);
-            System.out.printf("%.2f%% standard tickets.%n", percentstandart);
-            System.out.printf("%.2f%% kids tickets.%n", percentkids);
-
+            Console.WriteLine($"Users count: {massages.Count}");
+            foreach (var item in massages.OrderByDescending(x=>x.Value[1]).ThenBy(x=>x.Key))
+            {
+                Console.WriteLine($"{item.Key} - {item.Value.Sum()}");
+            }
         }
     }
 }
+
 
